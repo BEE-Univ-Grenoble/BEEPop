@@ -137,7 +137,7 @@ species.beepop_population <- function(data) {
 }
 
 
-#' Title
+#' Creation of a global maximum capacity method
 #'
 #' @param data
 #'
