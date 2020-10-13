@@ -66,7 +66,7 @@ current_size.beepop_population <- function(data) {
 append_size.beepop_community <- function(data,new_size) {
 
   new_com <- do.call(new_community,mapply(append_size,
-                                          com,
+                                          data,
                                           new_size,
                                           SIMPLIFY = FALSE)
   )
