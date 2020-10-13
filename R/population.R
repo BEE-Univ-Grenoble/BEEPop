@@ -120,48 +120,4 @@ species.beepop_population <- function(data) {
   data
 }
 
-#' Title
-#'
-#' @param data
-#' @param new_size
-#'
-#' @return
-#' @export
-#'
-#' @examples
-append_size <- function(data,new_size) {
-  UseMethod("append_size",data)
-}
 
-#' Title
-#'
-#' @export
-#'
-#' @rdname append_size
-#' @examples
-append_size.beepop_population <- function(data,new_size) {
-  data[length(data)+1] <- new_size
-  data
-}
-
-#' Title
-#'
-#' @param data
-#'
-#' @return
-#' @export
-#'
-#' @examples
-current_size <- function(data) {
-  UseMethod("current_size",data)
-}
-
-#' Title
-#'
-#' @export
-#'
-#' @rdname current_size
-#' @examples
-current_size.beepop_population <- function(data) {
-  data[length(data)]
-}
