@@ -16,7 +16,7 @@
 #' @export
 #'
 #' @examples
-#'   new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
+#' new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
 #'
 #' @md
 new_population <- function(pop_size, label, rate, max_capacity) {
@@ -37,8 +37,7 @@ new_population <- function(pop_size, label, rate, max_capacity) {
 #' @export
 #'
 #' @examples
-#'   z <- new_population(10,"toto",1.3)
-#'   print(z)
+#'   new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
 #'
 #' @md
 print.beepop_population <- function (x, ...) {
@@ -57,8 +56,8 @@ print.beepop_population <- function (x, ...) {
 #' @export
 #'
 #' @examples
-#' z <- new_population(10,"toto",1.3)
-#' growth_rate (z)
+#' pop1 <- new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
+#' growth_rate (pop1)
 #'
 growth_rate <- function(data) {
   UseMethod("growth_rate",data)
@@ -72,8 +71,8 @@ growth_rate <- function(data) {
 #' @export
 #'
 #' @examples
-#' z <- new_population(10,"toto",1.3)
-#'   growth_rate.beepop_population(z)
+#' pop1 <- new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
+#'   growth_rate.beepop_population(pop1)
 #'
 growth_rate.beepop_population <- function(data) {
   attributes(data)$rate
@@ -87,8 +86,8 @@ growth_rate.beepop_population <- function(data) {
 #' @export
 #'
 #' @examples
-#' z <- new_population(10,"toto",1.3)
-#'   species(z)
+#' pop1 <- new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
+#'   species(pop1)
 #'
 species <- function(data) {
   UseMethod("species",data)
@@ -102,62 +101,78 @@ species <- function(data) {
 #' @export
 #'
 #' @examples
-#'  z <- new_population(10,"toto",1.3)
-#'   species.beepop_population(z)
+#'  pop1 <- new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
+#'   species.beepop_population(pop1)
 #'
 species.beepop_population <- function(data) {
   attributes(data)$label
 }
 
-#' Title
+#' Creation of a species method
 #'
-#' @param data
-#' @param label
+#' @param data the instance to consider
+#' @param value  new label
 #'
-#' @return
+#' @return the instance modified with the new label
 #' @export
 #'
 #' @examples
+#'
+#' pop1 <- new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
+#' species(pop1) <- "Canis familiaris"
+#'
 `species<-` <- function(data,value) {
   UseMethod("species<-",data)
 }
 
-#' Title
+#' species<- method for class 'bee_population'
 #'
-#' @param data
-#' @param label
+#' @param data the instance to consider belonging to the class 'beepop_population'
+#' @param label the label
 #'
-#' @return
+#' @return the instance modified with the new label
 #' @export
 #'
 #' @examples
-`species<-.beepop_population` <- function(data,value) {
+#'
+#' pop1 <- new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
+#' species(pop1) <- "Canis familiaris"
+#'
+`species<-.beepop_population` <- function(data,value) {  #c est la methode qui est appelee
   attributes(data)$label <- value
   data
 }
 
 
-#' Creation of a global maximum capacity method
+
+#' Creation of a maximum capacity method
 #'
-#' @param data
+#' @param data the instance to consider
 #'
-#' @return
+#' @return the maximum capacity of the instance
 #' @export
 #'
 #' @examples
+#'
+#' pop1 <- new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
+#' maximum_capacity(pop1)
+#'
 maximum_capacity <- function(data) {
   UseMethod("maximum_capacity",data)
 }
 
 
-#' Title
+#' Maximum Capacity method for class 'beepop_population'
 #'
-#' @param data
+#' @param data the instance to consider belonging to the class `beepop_population`
 #'
-#' @return
+#' @return the maximum capacity of the instance
 #' @export
 #'
 #' @examples
+#' pop1 <- new_population(c(10,20,30),"toto",1.2, 100)
+#'   growth_rate.beepop_population(pop1)
+#'
 maximum_capacity.beepop_population <- function(data) {
   attributes(data)$max_capacity
 }

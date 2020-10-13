@@ -30,3 +30,4 @@ new_community <- function(..., label, interaction = NULL) {
             interaction = interaction,
             class = c("beepop_community",class(pops)))
 }
+
