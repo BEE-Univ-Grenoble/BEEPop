@@ -144,6 +144,7 @@ species.beepop_population <- function(data) {
 }
 
 
+
 #' Creation of a maximum capacity method
 #'
 #' @param data the instance to consider
