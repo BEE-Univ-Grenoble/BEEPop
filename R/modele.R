@@ -8,16 +8,16 @@
 #'
 #' @examples
 modele <- function(community){
+
   interaction<-attributes(community)$interaction
   popt0<-current_size(community)
-  popevol=numeric(ncol(community))
-  for (i in 1:ncol(community)){
-    somme=sum(interaction[i,]*popt0)
 
-    R=attributes(community[[i]])$rate
-    K=attributes(community[[i]])$max_capacity
-    popevol[i] <- popt0[i]*R*(1-(somme)/K)
-  }
-  community<-append_size(community, popevol)
+  R <- growth_rate(community)
+  K <- maximum_capacity(community)
+  somme <- interaction %*% popt0
+
+  popevol <- (1 - somme/K) * R * popt0
+
+  community<-append_size(community, popt0 + popevol)
   community
 }
