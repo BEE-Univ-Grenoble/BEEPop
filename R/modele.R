@@ -7,18 +7,17 @@
 #' @export
 #'
 #' @examples
-modele <- function(community, K){
+modele <- function(community){
+
   interaction<-attributes(community)$interaction
-  popt0<-as.integer(current_size(community))
-  popevol=c()
-  for (i in 1:ncol(community)){
-    somme=0
-    for (j in 1:ncol(community)){
-      somme=somme+interaction[i,j]*popt0[j]
-    }
-    R=attributes(community[[i]])$rate
-    popevol=c(popevol, popt0[i]*R*(1-(somme)/K))
-  }
-  community<-append_size(community, as.integer(popevol))
+  popt0<-current_size(community)
+
+  R <- growth_rate(community)
+  K <- maximum_capacity(community)
+  somme <- interaction %*% popt0
+
+  popevol <- (1 - somme/K) * R * popt0
+
+  community<-append_size(community, popt0 + popevol)
   community
 }
