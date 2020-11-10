@@ -60,25 +60,6 @@ species.beepop_community <- function(data) {
 
 
 
-#' Display the growth rate for each population
-#'
-#' Extract growth-rate from a ‘beepop_community’ class object
-#' @param data    One object of class ‘beepop_community’
-#'
-#' @return        A row with growth rate for each population
-#' @export
-#'
-#' @examples
-#' growth_rate.beepop_community(com)
-#’ growth_rate(com)
-#'
-#’ @md
-
-growth_rate.beepop_community <- function(data) {
-  as.numeric(sapply(data, growth_rate.beepop_population))
-}
-
-
 #' Display the interaction matrix of a community
 #’
 #’ Extract the interaction matrix from an object ‘beepop_community’,
