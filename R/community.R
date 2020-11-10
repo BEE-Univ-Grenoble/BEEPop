@@ -20,7 +20,6 @@ library(tibble)
 #’ new_community (loup = pop1, mouton = pop2, label = "Loups et moutons")
 #’ com=new_community(loup = pop1, mouton=pop2, label="Loup-mouton",interaction = matrix(data=c(1,0,1,0.2) ,nrow = 2, ncol = 2))
 #’ @md
-
 new_community <- function(..., label, interaction) {
 
   pops <- list(...)
@@ -38,9 +37,6 @@ new_community <- function(..., label, interaction) {
 }
 
 
-
-
-
 #' Display the name of the species in the community
 #'
 #’ A community is created from objects of class ‘beepop_population’,
@@ -51,44 +47,10 @@ new_community <- function(..., label, interaction) {
 #' @return the species’ names
 #' @export
 #'
-#' @examples
-#' species(new_community)
-#’
 #’ @md
-
 species.beepop_community <- function(data) {
   sapply(data, species.beepop_population)
 }
-
-
-
-
-
-
-
-
-
-
-
-#' Display the interaction matrix of a community
-#’
-#’ Extract the interaction matrix from an object ‘beepop_community’, using the method
-#’ “inter_mat”
-#'
-#' @param data   match of class ‘beepop_community’
-#'
-#' @return		 interaction matrix of the community
-#' @export
-#'
-#' @examples
-#’ inter_mat ( new_community )
-#’
-#’ @md
-
-inter_mat <- function(data) {
-  UseMethod("inter_mat",data)
-}
-
 
 
 #' Inter_mat method for class ‘beepop_community
@@ -101,17 +63,26 @@ inter_mat <- function(data) {
 #' @return the interaction matrix of data
 #' @export
 #'
-#' @examples
-#’ com = new_community(loup = pop1, mouton=pop2, label="Loup-mouton",interaction = matrix(data=c(1,0,1,0.2) ,nrow = 2, ncol = 2))
-#’ inter_mat(com)
-#’
 #’ @md
-
-inter_mat.beepop_community <- function(data) {
-  attributes(data)$interaction
+inter_mat <- function(data) {
+  UseMethod("inter_mat",data)
 }
 
 
+#' @rdname inter_mat
+#' @export
+#'
+#' @examples
+#'   pop1 <- new_population(c(10),"Ursus Arctos", 1.2, 100)
+#'   pop2 <- new_population(c(100),"Bufo bufo", 1.4, 1000)
+#'   com  <- new_community(bear = pop1,
+#'                         todd = pop2)
+#’   inter_mat(com)
+#’
+#’ @md
+inter_mat.beepop_community <- function(data) {
+  attributes(data)$interaction
+}
 
 
 #' Print method for class `beepop_community`
@@ -126,8 +97,6 @@ inter_mat.beepop_community <- function(data) {
 #' @examples
 #' print.beepop_community(com)
 #' @md
-
-
 print.beepop_community <- function (x, ...) {
   cat("Community :", attributes(x)$label, "\n")
   print.table(x)
