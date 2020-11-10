@@ -57,7 +57,7 @@ new_community <- function(..., label, interaction) {
 #’ @md
 
 species.beepop_community <- function(data) {
-  cat(sapply(data, species.beepop_population))
+  sapply(data, species.beepop_population)
 }
 
 
