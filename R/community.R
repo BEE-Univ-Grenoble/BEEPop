@@ -40,6 +40,7 @@ new_community <- function(..., label, interaction) {
 
 
 
+
 #' Display the name of the species in the community
 #'
 #’ A community is created from objects of class ‘beepop_population’,
