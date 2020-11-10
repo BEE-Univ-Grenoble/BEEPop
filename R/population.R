@@ -19,12 +19,13 @@
 #' new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
 #'
 #' @md
-new_population <- function(pop_size, label, rate, max_capacity) {
+new_population <- function(pop_size, label, rate, max_capacity= Inf) {
   structure(pop_size,
             label= label,
             rate = rate,
             max_capacity = max_capacity,
             class = "beepop_population")
+
 }
 
 
