@@ -32,7 +32,7 @@ new_population <- function(pop_size, label, rate, max_capacity= Inf) {
 #' Print method for class `beepop_population`
 #'
 #' @param x the instance to print
-#' @param ... other parameter, not used in that version;
+#' @param ... other parameter, not used in that version.
 #'
 #' @return the instance regarded
 #' @export
@@ -79,10 +79,10 @@ species.beepop_population <- function(data) {
   attributes(data)$label
 }
 
-#' Creation of a species method
+#' Creation of a species<- method
 #'
 #' @param data the instance to consider
-#' @param value  new label
+#' @param value  the new label
 #'
 #' @return the instance modified with the new label
 #' @export
@@ -99,7 +99,7 @@ species.beepop_population <- function(data) {
 #' species<- method for class 'bee_population'
 #'
 #' @param data the instance to consider belonging to the class 'beepop_population'
-#' @param label the label
+#' @param value the new label
 #'
 #' @return the instance modified with the new label
 #' @export
@@ -109,7 +109,7 @@ species.beepop_population <- function(data) {
 #' pop1 <- new_population(c(10,20,30),"Ursus Arctos", 1.2, 100)
 #' species(pop1) <- "Canis familiaris"
 #'
-`species<-.beepop_population` <- function(data,value) {  #c est la methode qui est appelee
+`species<-.beepop_population` <- function(data,value) {
   attributes(data)$label <- value
   data
 }
