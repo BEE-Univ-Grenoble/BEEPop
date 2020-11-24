@@ -110,7 +110,3 @@ model.multi.years.plot <- function(community, n, gg.plot=FALSE){
 
 
 
-
-
-
-
