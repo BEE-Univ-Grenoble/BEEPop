@@ -50,7 +50,7 @@ beepop_model <- function(community){
 #' goat <- new_population(23, "goat", 0.5, 100)
 #' shepherd <- new_community("wolf" = wolf, "sheep" = sheep, "goat" = goat)
 #'
-#' model.multi.years(shepherd,10)
+#' model_multi_years(shepherd,10)
 #'
 #' @export
 
@@ -79,12 +79,12 @@ model_multi_years <- function(community, n){
 #' goat <- new_population(23, "goat", 0.5, 100)
 #' shepherd <- new_community("wolf" = wolf, "sheep" = sheep, "goat" = goat)
 #'
-#' model.multi.years.plot(shepherd, 10, gg.plot=TRUE)
-#' model.multi.years.plot(shepherd, 10)
+#' model_multi_years_plot(shepherd, 10, gg.plot=TRUE)
+#' model_multi_years_plot(shepherd, 10)
 #'
 #' @export
 
-model.multi.years.plot <- function(community, n, gg.plot=FALSE){
+model_multi_years_plot <- function(community, n, gg.plot=FALSE){
   evol_model <- model.multi.years(community, n)
   if(gg.plot==FALSE){
     RColorBrewer::ncolor <- brewer.pal(n = ncol(evol_model), name = "Set1")
