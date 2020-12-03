@@ -1,18 +1,15 @@
-#' Ajouter une nouvelle taille de population dans l'historique
-#' des tailles
+#' Adding a new population size in the size history
 #'
-#' @param data population ou communauté à modifier
-#' @param new_size nouvelle taille de la population
+#' @param data population or community to modify
+#' @param new_size new population size
 #'
-#' @return une version modifiée de la population ou communauté
+#' @return a modified version of the population or community
 #' @export
 #'
 append_size <- function(data,new_size) {
   UseMethod("append_size",data)
 }
 
-#' Methode append_size applicable à une population
-#'
 #' @export
 #'
 #' @rdname append_size
@@ -26,11 +23,11 @@ append_size.beepop_population <- function(data,new_size) {
   data
 }
 
-#' Retourne la derniere taille d'une population ou d'une communauté
+#' Returns the last size of a population or community
 #'
-#' @param data population ou communauté
+#' @param data population or community 
 #'
-#' @return la dernierre taille de la population ou de la communauté
+#' @return the last size of the population or community
 #' @export
 #'
 #' @examples
@@ -38,8 +35,6 @@ current_size <- function(data) {
   UseMethod("current_size",data)
 }
 
-#' Methode current_size applicable à une population
-#'
 #' @export
 #'
 #' @rdname current_size
@@ -52,8 +47,6 @@ current_size.beepop_population <- function(data) {
   data[length(data)]
 }
 
-#' Methode append_size applicable à une community
-#'
 #' @rdname append_size
 #' @export
 #'
@@ -77,8 +70,6 @@ append_size.beepop_community <- function(data,new_size) {
   new_com
 }
 
-#' Methode current_size appliquée à une community
-#'
 #' @export
 #'
 #' @rdname current_size
